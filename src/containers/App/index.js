@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SimpleForm from '../../components/Forms';
 
 class App extends Component {
     render() {
@@ -8,8 +9,9 @@ class App extends Component {
 
         return (
             <div>
-            <h2>Test</h2>
-                   {children}
+                <h2>Test</h2>
+                {children}
+                <SimpleForm />
             </div>
         );
     }
