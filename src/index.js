@@ -12,6 +12,9 @@ import MainRoutes from './MainRoutes';
 // import { App } from './containers';
 // import App from './containers/App';
 
+// Bootstrap Asset
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 const history = syncHistoryWithStore(browserHistory, store)
 

@@ -1,103 +1,94 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
+// import react-bootstrap dependencies
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+
 const SimpleForm = props => {
   const { handleSubmit, pristine, reset, submitting } = props
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>First Name</label>
-        <div>
-          <Field
-            name="firstName"
-            component="input"
-            type="text"
-            placeholder="First Name"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Last Name</label>
-        <div>
-          <Field
-            name="lastName"
-            component="input"
-            type="text"
-            placeholder="Last Name"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Email</label>
-        <div>
-          <Field
-            name="email"
-            component="input"
-            type="email"
-            placeholder="Email"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Sex</label>
-        <div>
-          <label>
-            <Field
-              name="sex"
-              component="input"
-              type="radio"
-              value="male"
-            />{' '}
-            Male
-          </label>
-          <label>
-            <Field
-              name="sex"
-              component="input"
-              type="radio"
-              value="female"
-            />{' '}
-            Female
-          </label>
-        </div>
-      </div>
-      <div>
-        <label>Favorite Color</label>
-        <div>
-          <Field name="favoriteColor" component="select">
-            <option />
-            <option value="ff0000">Red</option>
-            <option value="00ff00">Green</option>
-            <option value="0000ff">Blue</option>
-          </Field>
-        </div>
-      </div>
-      <div>
-        <label htmlFor="employed">Employed</label>
-        <div>
-          <Field
-            name="employed"
-            id="employed"
-            component="input"
-            type="checkbox"
-          />
-        </div>
-      </div>
-      <div>
-        <label>Notes</label>
-        <div>
-          <Field name="notes" component="textarea" />
-        </div>
-      </div>
-      <div>
-        <button type="submit" disabled={pristine || submitting}>
-          Submit
-        </button>
-        <button type="button" disabled={pristine || submitting} onClick={reset}>
-          Clear Values
-        </button>
-      </div>
-    </form>
+    
+    <Form onSubmit={handleSubmit}>
+        <FormGroup row>
+            <Label htmlFor="exampleEmail" sm={2}>Email</Label>
+            <Col sm={10}>
+                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="examplePassword" sm={2}>Password</Label>
+            <Col sm={10}>
+            <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="exampleSelect" sm={2}>Select</Label>
+            <Col sm={10}>
+            <Input type="select" name="select" id="exampleSelect" />
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="exampleSelectMulti" sm={2}>Select Multiple</Label>
+            <Col sm={10}>
+            <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple />
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="exampleText" sm={2}>Text Area</Label>
+            <Col sm={10}>
+            <Input type="textarea" name="text" id="exampleText" />
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="exampleFile" sm={2}>File</Label>
+            <Col sm={10}>
+            <Input type="file" name="file" id="exampleFile" />
+            <FormText color="muted">
+                This is some placeholder block-level help text for the above input.
+                It's a bit lighter and easily wraps to a new line.
+            </FormText>
+            </Col>
+        </FormGroup>
+        <FormGroup tag="fieldset" row>
+            <legend className="col-form-legend col-sm-2">Radio Buttons</legend>
+            <Col sm={10}>
+            <FormGroup check>
+                <Label check>
+                <Input type="radio" name="radio2" />{' '}
+                Option one is this and that—be sure to include why it's great
+                </Label>
+            </FormGroup>
+            <FormGroup check>
+                <Label check>
+                <Input type="radio" name="radio2" />{' '}
+                Option two can be something else and selecting it will deselect option one
+                </Label>
+            </FormGroup>
+            <FormGroup check disabled>
+                <Label check>
+                <Input type="radio" name="radio2" disabled />{' '}
+                Option three is disabled
+                </Label>
+            </FormGroup>
+            </Col>
+        </FormGroup>
+        <FormGroup row>
+            <Label htmlFor="checkbox2" sm={2}>Checkbox</Label>
+            <Col sm={{ size: 10 }}>
+            <FormGroup check>
+                <Label check>
+                <Input type="checkbox" id="checkbox2" />{' '}
+                Check me out
+                </Label>
+            </FormGroup>
+            </Col>
+        </FormGroup>
+        <FormGroup check row>
+            <Col sm={{ size: 10, offset: 2 }}>
+            <Button>Submit</Button>
+            </Col>
+        </FormGroup>
+    </Form>
   )
 }
 
