@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import SimpleForm from '../../components/Forms';
 
 class App extends Component {
+
+
+    submit(values) {
+        console.log(values,"TEST")
+    }
+
+
     render() {
         const {
             children
@@ -12,7 +19,7 @@ class App extends Component {
             <div className="container">
                 <h2>Test</h2>
                 {children}
-                <SimpleForm />
+                <SimpleForm onSubmit={this.submit}/>
             </div>
         );
     }

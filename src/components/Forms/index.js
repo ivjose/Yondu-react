@@ -5,87 +5,55 @@ import { Field, reduxForm } from 'redux-form'
 import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 const SimpleForm = props => {
-  const { handleSubmit, pristine, reset, submitting } = props
+  const { error, submit, handleSubmit, pristine, reset, submitting } = props
+
+  const renderField = ({ input, label, type, meta: { touched, error } }) =>
+  <div>
+    <label>
+      {label}
+    </label>
+    <div>
+      <input {...input} placeholder={label} type={type} />
+      {touched &&
+        error &&
+        <span>
+          {error}
+        </span>}
+    </div>
+  </div>
+
   return (
     
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit(submit)}>
         <FormGroup row>
             <Label htmlFor="exampleEmail" sm={2}>Email</Label>
             <Col sm={10}>
-                <Input type="email" name="email" id="exampleEmail" placeholder="with a placeholder" />
+                <Field 
+                    type="email" 
+                    name="email" 
+                    id="exampleEmail" 
+                    placeholder="with a placeholder"
+                    className="form-control"
+                    component={renderField} 
+                />
             </Col>
         </FormGroup>
         <FormGroup row>
             <Label htmlFor="examplePassword" sm={2}>Password</Label>
             <Col sm={10}>
-            <Input type="password" name="password" id="examplePassword" placeholder="password placeholder" />
+                <Field 
+                    type="password" 
+                    name="password" 
+                    id="examplePassword" 
+                    placeholder="password placeholder"
+                    component={renderField}
+                />
             </Col>
         </FormGroup>
-        <FormGroup row>
-            <Label htmlFor="exampleSelect" sm={2}>Select</Label>
-            <Col sm={10}>
-            <Input type="select" name="select" id="exampleSelect" />
-            </Col>
-        </FormGroup>
-        <FormGroup row>
-            <Label htmlFor="exampleSelectMulti" sm={2}>Select Multiple</Label>
-            <Col sm={10}>
-            <Input type="select" name="selectMulti" id="exampleSelectMulti" multiple />
-            </Col>
-        </FormGroup>
-        <FormGroup row>
-            <Label htmlFor="exampleText" sm={2}>Text Area</Label>
-            <Col sm={10}>
-            <Input type="textarea" name="text" id="exampleText" />
-            </Col>
-        </FormGroup>
-        <FormGroup row>
-            <Label htmlFor="exampleFile" sm={2}>File</Label>
-            <Col sm={10}>
-            <Input type="file" name="file" id="exampleFile" />
-            <FormText color="muted">
-                This is some placeholder block-level help text for the above input.
-                It's a bit lighter and easily wraps to a new line.
-            </FormText>
-            </Col>
-        </FormGroup>
-        <FormGroup tag="fieldset" row>
-            <legend className="col-form-legend col-sm-2">Radio Buttons</legend>
-            <Col sm={10}>
-            <FormGroup check>
-                <Label check>
-                <Input type="radio" name="radio2" />{' '}
-                Option one is this and that—be sure to include why it's great
-                </Label>
-            </FormGroup>
-            <FormGroup check>
-                <Label check>
-                <Input type="radio" name="radio2" />{' '}
-                Option two can be something else and selecting it will deselect option one
-                </Label>
-            </FormGroup>
-            <FormGroup check disabled>
-                <Label check>
-                <Input type="radio" name="radio2" disabled />{' '}
-                Option three is disabled
-                </Label>
-            </FormGroup>
-            </Col>
-        </FormGroup>
-        <FormGroup row>
-            <Label htmlFor="checkbox2" sm={2}>Checkbox</Label>
-            <Col sm={{ size: 10 }}>
-            <FormGroup check>
-                <Label check>
-                <Input type="checkbox" id="checkbox2" />{' '}
-                Check me out
-                </Label>
-            </FormGroup>
-            </Col>
-        </FormGroup>
+
         <FormGroup check row>
             <Col sm={{ size: 10, offset: 2 }}>
-            <Button>Submit</Button>
+            <Button type="submit">Submit</Button>
             </Col>
         </FormGroup>
     </Form>
