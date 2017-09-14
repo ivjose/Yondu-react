@@ -7,15 +7,16 @@ import { configure, addDecorator } from '@storybook/react';
 
 import { Provider } from 'react-redux';
 import { store } from '../redux/store';
-
+import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 //import { Button, Welcome } from '@storybook/react/demo';
-
 
 //import Button from './Button';
 import Welcome from './Welcome';
 
 import SimpleForm from '../components/Forms';
 
+// Add bootstrap 4 support from npm
+import 'bootstrap/dist/css/bootstrap.css';
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
