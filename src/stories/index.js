@@ -23,15 +23,11 @@ storiesOf('Button', module)
     .add('with text', () => (
         <Button>Hello Button</Button>
     ));
+    
 
-storiesOf('Form', module)
-    .addDecorator(getStory => (
-        <Provider store={store}>
-            getStory()
-        </Provider>))
-    .add('initialState', () => (
-        <SimpleForm />
-    ));
+storiesOf('Simple Form', module)
+    .addDecorator(story => <Provider store={store}>{story()}</Provider>)
+    .add('default', () => <SimpleForm onSubmit={this.submit}/>);
 
 // storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
