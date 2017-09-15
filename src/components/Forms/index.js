@@ -25,6 +25,7 @@ const SimpleForm = props => {
   return (
     
     <Form onSubmit={handleSubmit(submit)}>
+        <h4>Simple Form</h4>
         <FormGroup row>
             <Label htmlFor="exampleEmail" sm={2}>Email</Label>
             <Col sm={10}>
