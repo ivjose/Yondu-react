@@ -14,6 +14,7 @@ import { Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap
 import Welcome from './Welcome';
 
 import SimpleForm from '../components/Forms';
+import SubmitValidationForm from '../components/Forms/FormValidation';
 
 // Add bootstrap 4 support from npm
 import 'bootstrap/dist/css/bootstrap.css';
@@ -29,6 +30,13 @@ storiesOf('Button', module)
 storiesOf('Simple Form', module)
     .addDecorator(story => <Provider store={store}>{story()}</Provider>)
     .add('default', () => <SimpleForm onSubmit={this.submit}/>);
+
+
+storiesOf('Validation Form', module)
+    .addDecorator(story => <Provider store={store}>{story()}</Provider>)
+    .add('default', () => <SubmitValidationForm onSubmit={this.submit}/>)
+    .add('submitting', () => <SubmitValidationForm />)
+    .add('submitted', () => <SubmitValidationForm />);
 
 // storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 

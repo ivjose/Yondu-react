@@ -8,7 +8,7 @@ import { Col, Button, Form, FormGroup, FormFeedback, Label, Input, FormText } fr
 
 const renderField = ({ input, label, type, meta: { touched, error } }) =>
   <div>
-    <input {...input} placeholder={label} type={type} />
+    <input {...input} placeholder={label} type={type} className="form-control" />
     {touched &&
         error &&
         <FormFeedback>
@@ -45,10 +45,10 @@ const SubmitValidationForm = props => {
         </FormGroup>
 
         <FormGroup>  
-            <button type="submit" disabled={submitting}>
+            <button type="submit" className="btn btn-primary" disabled={submitting}>
                 Log In
             </button>
-            <button type="button" disabled={pristine || submitting} onClick={reset}>
+            <button type="button" className="btn btn-secondary" disabled={pristine || submitting} onClick={reset}>
                 Clear Values
             </button>
         </FormGroup>

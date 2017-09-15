@@ -13,7 +13,7 @@ const SimpleForm = props => {
       {label}
     </label>
     <div>
-      <input {...input} placeholder={label} type={type} />
+      <input {...input} placeholder={label} type={type} className="form-control" />
       {touched &&
         error &&
         <span>
